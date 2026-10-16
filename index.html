@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RSA Pro Fitness | Premier Gym & Health Club in Ara, Bihar</title>
+  <meta name="description" content="Ara's premier fitness club near Bazaar Samiti Gate, Anaith. State-of-the-art imported equipment, certified trainers, ladies batches, and personal coaching. Claim your 1-Day Free Trial Pass!" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ef4444'><path d='M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z'/></svg>" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              red: '#ff2a2a',
+              crimson: '#dc2626',
+              darkred: '#880808',
+              amber: '#f59e0b',
+              dark: '#07080c',
+              surface: '#0f1118',
+              card: '#141722',
+              border: '#262a3b'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Montserrat', 'Oswald', 'sans-serif'],
+          },
+          animation: {
+            'glow-pulse': 'glowPulse 2s ease-in-out infinite',
+            'float': 'float 5s ease-in-out infinite',
+            'shimmer': 'shimmer 2.5s infinite linear',
+            'orb-float': 'orbFloat 10s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            glowPulse: {
+              '0%, 100%': { boxShadow: '0 0 20px rgba(255, 42, 42, 0.4), 0 0 45px rgba(255, 42, 42, 0.2)' },
+              '50%': { boxShadow: '0 0 35px rgba(255, 42, 42, 0.9), 0 0 70px rgba(255, 42, 42, 0.5)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
+            },
+            shimmer: {
+              '0%': { backgroundPosition: '-200% 0' },
+              '100%': { backgroundPosition: '200% 0' },
+            },
+            orbFloat: {
+              '0%': { transform: 'translate(0px, 0px) scale(1)' },
+              '100%': { transform: 'translate(40px, -30px) scale(1.15)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Custom Smooth Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #07080c; }
+    ::-webkit-scrollbar-thumb { background: #ff2a2a; border-radius: 4px; }
+
+    /* Cyber Matrix Background Grid */
+    .cyber-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 42, 42, 0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 42, 42, 0.07) 1px, transparent 1px);
+    }
+
+    /* High Visibility Glowing Orbs */
+    .ambient-orb-1 {
+      position: fixed;
+      top: 15%;
+      left: 10%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(255, 42, 42, 0.22) 0%, rgba(220, 38, 38, 0.05) 50%, transparent 70%);
+      filter: blur(50px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .ambient-orb-2 {
+      position: fixed;
+      bottom: 20%;
+      right: 5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.16) 0%, rgba(255, 42, 42, 0.08) 45%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Glass Cards */
+    .glass-card {
+      background: rgba(20, 23, 34, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .glass-card:hover {
+      border-color: rgba(255, 42, 42, 0.5);
+      box-shadow: 0 10px 30px -10px rgba(255, 42, 42, 0.25);
+    }
+
+    /* Floating Pill Navbar */
+    .floating-navbar {
+      background: rgba(10, 12, 18, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 42, 42, 0.35);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 42, 42, 0.2);
+    }
+
+    /* Shimmer Button */
+    .btn-shimmer {
+      background: linear-gradient(90deg, #ff2a2a 0%, #ff5e5e 25%, #ff2a2a 50%, #b91c1c 75%, #ff2a2a 100%);
+      background-size: 200% auto;
+    }
+    .btn-shimmer:hover {
+      background-position: right center;
+    }
+
+    .text-gradient-red {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ff2a2a 50%, #dc2626 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+
+<body class="bg-brand-dark text-gray-100 font-sans antialiased selection:bg-brand-red selection:text-white relative overflow-x-hidden cyber-grid">
+
+  <!-- High Visibility Floating Background Animation Canvas -->
+  <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- Ambient Pulsing Glow Orbs -->
+  <div class="ambient-orb-1 animate-orb-float"></div>
+  <div class="ambient-orb-2 animate-orb-float" style="animation-delay: -5s;"></div>
+
+  <!-- Top Real-time Gym Status Bar -->
+  <div class="relative z-50 bg-black/80 border-b border-brand-red/30 py-2 px-4 text-xs font-semibold tracking-wide text-center flex items-center justify-center gap-2">
+    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[11px] font-bold">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+      OPEN NOW
+    </span>
+    <span class="text-gray-300">Deo Vihar, Near Bazaar Samiti Gate, Anaith, Ara</span>
+    <span class="hidden sm:inline text-gray-500">•</span>
+    <span class="hidden sm:inline text-brand-red font-bold">Daily Batches: 5:00 AM – 9:30 PM</span>
+    <button onclick="openModal()" class="ml-2 text-white bg-brand-red px-2.5 py-0.5 rounded text-[11px] font-bold hover:bg-brand-crimson transition shadow">
+      Free Trial Pass &rarr;
+    </button>
+  </div>
+
+  <!-- Ultra-Attractive Floating Glass Navbar -->
+  <header class="sticky top-3 z-40 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <nav class="floating-navbar rounded-2xl px-4 sm:px-6 py-3 transition-all duration-300 flex items-center justify-between">
+      
+      <!-- Logo Branding -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-red via-brand-crimson to-black p-0.5 shadow-lg shadow-brand-red/40 group-hover:scale-105 transition transform">
+          <div class="w-full h-full bg-brand-dark rounded-[10px] flex items-center justify-center text-brand-red group-hover:bg-brand-red group-hover:text-white transition">
+            <i data-lucide="dumbbell" class="w-6 h-6 stroke-[2.5]"></i>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-1">
+            <span class="text-xl sm:text-2xl font-black tracking-wider font-heading text-white">RSA</span>
+            <span class="text-xl sm:text-2xl font-black tracking-wider font-heading text-brand-red">PRO FITNESS</span>
+          </div>
+          <span class="text-[9px] uppercase tracking-widest text-gray-400 font-bold block -mt-0.5">Premier Health Club • Ara</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Items -->
+      <div class="hidden lg:flex items-center gap-7 font-bold text-xs uppercase tracking-wider text-gray-300">
+        <a href="#gallery" class="hover:text-brand-red transition flex items-center gap-1.5">
+          <i data-lucide="camera" class="w-3.5 h-3.5 text-brand-red"></i> Gym In Action
+        </a>
+        <a href="#facilities" class="hover:text-brand-red transition flex items-center gap-1.5">
+          <i data-lucide="layers" class="w-3.5 h-3.5 text-brand-red"></i> Zones
+        </a>
+        <a href="#batches" class="hover:text-brand-red transition flex items-center gap-1.5">
+          <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-red"></i> Timings
+        </a>
+        <a href="#pricing" class="hover:text-brand-red transition flex items-center gap-1.5">
+          <i data-lucide="tag" class="w-3.5 h-3.5 text-brand-red"></i> Fees
+        </a>
+        <a href="#calculator" class="hover:text-brand-red transition flex items-center gap-1.5">
+          <i data-lucide="calculator" class="w-3.5 h-3.5 text-brand-red"></i> BMI Tool
+        </a>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="hidden sm:flex items-center gap-3">
+        <a href="https://wa.me/918210453434" target="_blank" class="px-3.5 py-2 rounded-xl bg-zinc-900/90 hover:bg-zinc-800 text-gray-200 text-xs font-bold border border-zinc-700/80 transition flex items-center gap-2">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-red"></i>
+          <span>8210453434</span>
+        </a>
+
+        <button onclick="openModal()" class="btn-shimmer px-5 py-2.5 rounded-xl text-white text-xs font-black uppercase tracking-wider shadow-lg shadow-brand-red/50 animate-glow-pulse transition transform hover:scale-105 flex items-center gap-2">
+          <i data-lucide="ticket" class="w-4 h-4"></i>
+          <span>Claim Free Pass</span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <div class="flex lg:hidden">
+        <button id="mobile-menu-btn" class="p-2 rounded-xl bg-zinc-900 text-gray-200 border border-zinc-700 hover:text-white">
+          <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+    </nav>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" class="hidden lg:hidden floating-navbar rounded-2xl mt-2 p-5 transition-all duration-300">
+      <div class="flex flex-col gap-3 font-bold text-sm text-gray-200">
+        <a href="#gallery" onclick="closeMobileMenu()" class="py-2 border-b border-zinc-800 flex items-center gap-2"><i data-lucide="camera" class="w-4 h-4 text-brand-red"></i> Gym In Action</a>
+        <a href="#facilities" onclick="closeMobileMenu()" class="py-2 border-b border-zinc-800 flex items-center gap-2"><i data-lucide="layers" class="w-4 h-4 text-brand-red"></i> Club Zones</a>
+        <a href="#batches" onclick="closeMobileMenu()" class="py-2 border-b border-zinc-800 flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-brand-red"></i> Batches & Timings</a>
+        <a href="#pricing" onclick="closeMobileMenu()" class="py-2 border-b border-zinc-800 flex items-center gap-2"><i data-lucide="tag" class="w-4 h-4 text-brand-red"></i> Membership Fees</a>
+        <a href="#calculator" onclick="closeMobileMenu()" class="py-2 border-b border-zinc-800 flex items-center gap-2"><i data-lucide="calculator" class="w-4 h-4 text-brand-red"></i> BMI Calculator</a>
+        <div class="pt-2 flex flex-col gap-2">
+          <button onclick="openModal(); closeMobileMenu();" class="w-full py-3 rounded-xl btn-shimmer text-white font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg">
+            <i data-lucide="ticket" class="w-4 h-4"></i>
+            <span>Claim 1-Day Free Trial Pass</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with Indian Gym Athletes Image Banner -->
+  <section class="relative min-h-[85vh] flex items-center justify-center pt-8 pb-14 px-4 sm:px-6 lg:px-8 z-10">
+    <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      
+      <!-- Left: Punchy, Minimal Text & Instant Actions -->
+      <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+        
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-red/20 border border-brand-red/50 text-brand-red text-xs font-extrabold uppercase tracking-widest shadow-md">
+          <i data-lucide="flame" class="w-4 h-4 text-amber-400"></i>
+          <span>Ara's #1 Rated Fitness Destination</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl font-black font-heading tracking-tight leading-[1.05] uppercase text-white">
+          BUILD YOUR <br />
+          <span class="text-gradient-red">STRONGEST BODY</span> <br />
+          AT RSA GYM
+        </h1>
+
+        <!-- High-Impact Image Chips Instead of Long Paragraphs -->
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1">
+          <span class="px-3 py-1.5 rounded-xl bg-zinc-900/90 border border-zinc-700 text-xs font-bold text-gray-200 flex items-center gap-1.5">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-red"></i> 100% Imported Machines
+          </span>
+          <span class="px-3 py-1.5 rounded-xl bg-zinc-900/90 border border-zinc-700 text-xs font-bold text-gray-200 flex items-center gap-1.5">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-red"></i> Dedicated Ladies Batch
+          </span>
+          <span class="px-3 py-1.5 rounded-xl bg-zinc-900/90 border border-zinc-700 text-xs font-bold text-gray-200 flex items-center gap-1.5">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-red"></i> Certified Indian Trainers
+          </span>
+        </div>
+
+        <!-- Big CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-2">
+          <button onclick="openModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl btn-shimmer text-white font-black text-sm uppercase tracking-wider shadow-xl shadow-brand-red/50 animate-glow-pulse transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
+            <i data-lucide="ticket" class="w-5 h-5"></i>
+            <span>GET 1-DAY FREE TRIAL PASS</span>
+          </button>
+          <a href="https://wa.me/918210453434?text=Hi%20RSA%20Gym%20Ara,%20I%20want%20to%20visit%20today" target="_blank" class="w-full sm:w-auto px-6 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm uppercase tracking-wider transition flex items-center justify-center gap-2">
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            <span>WhatsApp Us</span>
+          </a>
+        </div>
+
+        <!-- Visual Stats Strip -->
+        <div class="grid grid-cols-3 gap-3 pt-4 border-t border-zinc-800">
+          <div class="p-3 rounded-xl bg-zinc-900/70 border border-zinc-800 text-center">
+            <span class="text-2xl font-black font-heading text-amber-400">4.7 ★</span>
+            <span class="block text-[10px] uppercase font-bold text-gray-400">120+ Reviews</span>
+          </div>
+          <div class="p-3 rounded-xl bg-zinc-900/70 border border-zinc-800 text-center">
+            <span class="text-2xl font-black font-heading text-white">5,000</span>
+            <span class="block text-[10px] uppercase font-bold text-gray-400">Sq. Ft. Floor</span>
+          </div>
+          <div class="p-3 rounded-xl bg-zinc-900/70 border border-zinc-800 text-center">
+            <span class="text-2xl font-black font-heading text-brand-red">800+</span>
+            <span class="block text-[10px] uppercase font-bold text-gray-400">Members</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: Main Hero AI Photo Showcase of Indian Athletes -->
+      <div class="lg:col-span-6 relative">
+        <div class="relative rounded-3xl overflow-hidden border-2 border-brand-red/40 shadow-2xl shadow-brand-red/20 group">
+          
+          <img src="assets/hero_indian_athletes.jpg" alt="Indian Fitness Athletes at RSA Pro Fitness Gym" class="w-full h-[460px] sm:h-[520px] object-cover group-hover:scale-105 transition duration-700" />
+          
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent"></div>
+
+          <!-- Bottom Floating Badge on Hero Image -->
+          <div class="absolute bottom-4 inset-x-4 glass-card rounded-2xl p-4 border border-brand-red/30 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-brand-red flex items-center justify-center text-white font-bold">
+                <i data-lucide="zap" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-black font-heading text-white uppercase">Real Results • Real Guidance</h4>
+                <p class="text-xs text-gray-300">Anaith, Near Bazaar Samiti Gate, Ara</p>
+              </div>
+            </div>
+            <button onclick="openModal()" class="px-3.5 py-1.5 rounded-lg bg-brand-red hover:bg-brand-crimson text-white font-bold text-xs uppercase tracking-wider transition">
+              Book Pass
+            </button>
+          </div>
+
+          <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-brand-red/40 text-brand-red text-xs font-black uppercase tracking-wider">
+            Premium Training Floor
+          </span>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section: Real Gym In Action (Visual Photo Showcase with Indian Members) -->
+  <section id="gallery" class="py-16 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-zinc-800">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
+        <span class="text-xs font-black uppercase tracking-widest text-brand-red">Visual Tour</span>
+        <h2 class="text-3xl sm:text-4xl font-black font-heading text-white uppercase">
+          Inside RSA Pro Fitness
+        </h2>
+        <p class="text-xs sm:text-sm text-gray-400">See our equipment, members, trainers, and high-energy environment in Ara.</p>
+      </div>
+
+      <!-- 3-Column AI Photo Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Card 1: Indian Male Heavy Lifting -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-zinc-800 group hover:border-brand-red transition">
+          <div class="h-72 overflow-hidden relative">
+            <img src="assets/indian_male_lifting.jpg" alt="Indian Athlete Lifting Dumbbells at RSA Gym Ara" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-brand-red text-white text-[10px] font-black uppercase tracking-wider">Heavy Iron Zone</span>
+          </div>
+          <div class="p-5 space-y-2">
+            <h3 class="text-lg font-black font-heading text-white uppercase">Dumbbell & Barbell Deck</h3>
+            <p class="text-xs text-gray-400">Up to 50 kg dumbbells, Olympic bench press stations, squat racks, and shock-absorbing flooring.</p>
+          </div>
+        </div>
+
+        <!-- Card 2: Indian Female Active Fitness -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-zinc-800 group hover:border-brand-red transition">
+          <div class="h-72 overflow-hidden relative">
+            <img src="assets/indian_female_fitness.jpg" alt="Indian Woman Working Out on Commercial Treadmill at RSA Gym" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-pink-600 text-white text-[10px] font-black uppercase tracking-wider">Ladies Batch & Cardio</span>
+          </div>
+          <div class="p-5 space-y-2">
+            <h3 class="text-lg font-black font-heading text-white uppercase">Cardio & Safe Ladies Hours</h3>
+            <p class="text-xs text-gray-400">Dedicated 10:30 AM – 12:30 PM women's hours with total privacy, air-conditioned treadmills, and spin bikes.</p>
+          </div>
+        </div>
+
+        <!-- Card 3: Certified Indian Trainer Coaching Member -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-zinc-800 group hover:border-brand-red transition">
+          <div class="h-72 overflow-hidden relative">
+            <img src="assets/indian_trainer_coaching.jpg" alt="Certified Indian Fitness Trainer Guiding Posture at RSA Gym Ara" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-amber-500 text-black text-[10px] font-black uppercase tracking-wider">Certified Coaching</span>
+          </div>
+          <div class="p-5 space-y-2">
+            <h3 class="text-lg font-black font-heading text-white uppercase">Zero-Judgment Guidance</h3>
+            <p class="text-xs text-gray-400">Friendly floor trainers who teach beginners proper lifting mechanics, avoid injuries, and plan meal macros.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section: Club Facilities at a Glance (Icon Grid, Minimal Text) -->
+  <section id="facilities" class="py-16 px-4 sm:px-6 lg:px-8 relative z-10 bg-brand-surface/70 border-t border-zinc-800">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+        <div>
+          <span class="text-xs font-black uppercase tracking-widest text-brand-red">Infrastructure</span>
+          <h2 class="text-3xl sm:text-4xl font-black font-heading text-white uppercase">Premium Club Zones</h2>
+        </div>
+        <button onclick="openModal()" class="px-5 py-2.5 rounded-xl bg-brand-red hover:bg-brand-crimson text-white font-bold text-xs uppercase tracking-wider transition self-start sm:self-auto">
+          Claim 1-Day Trial Pass &rarr;
+        </button>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        
+        <div class="glass-card rounded-xl p-4 text-center space-y-2 hover:-translate-y-1 transition">
+          <div class="w-12 h-12 rounded-xl bg-brand-red/20 text-brand-red flex items-center justify-center mx-auto">
+            <i data-lucide="dumbbell" class="w-6 h-6"></i>
+          </div>
+          <h4 class="text-sm font-bold text-white uppercase">Free Weights</h4>
+          <span class="text-[11px] text-gray-400 block">2.5kg to 50kg</span>
+        </div>
+
+        <div class="glass-card rounded-xl p-4 text-center space-y-2 hover:-translate-y-1 transition">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
+            <i data-lucide="activity" class="w-6 h-6"></i>
+          </div>
+          <h4 class="text-sm font-bold text-white uppercase">Cardio Arena</h4>
+          <span class="text-[11px] text-gray-400 block">Treadmills & Bikes</span>
+        </div>
+
+        <div class="glass-card rounded-xl p-4 text-center space-y-2 hover:-translate-y-1 transition">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto">
+            <i data-lucide="shield" class="w-6 h-6"></i>
+          </div>
+          <h4 class="text-sm font-bold text-white uppercase">Ladies Hours</h4>
+          <span class="text-[11px] text-gray-400 block">10:30AM - 12:30PM</span>
+        </div>
+
+        <div class="glass-card rounded-xl p-4 text-center space-y-2 hover:-translate-y-1 transition">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center mx-auto">
+            <i data-lucide="award" class="w-6 h-6"></i>
+          </div>
+          <h4 class="text-sm font-bold text-white uppercase">Police / Army</h4>
+          <span class="text-[11px] text-gray-400 block">Physical Exam Prep</span>
+        </div>
+
+        <div class="glass-card rounded-xl p-4 text-center space-y-2 hover:-translate-y-1 transition">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center mx-auto">
+            <i data-lucide="lock" class="w-6 h-6"></i>
+          </div>
+          <h4 class="text-sm font-bold text-white uppercase">Lockers</h4>
+          <span class="text-[11px] text-gray-400 block">Safe Storage</span>
+        </div>
+
+        <div class="glass-card rounded-xl p-4 text-center space-y-2 hover:-translate-y-1 transition">
+          <div class="w-12 h-12 rounded-xl bg-red-500/20 text-brand-red flex items-center justify-center mx-auto">
+            <i data-lucide="utensils" class="w-6 h-6"></i>
+          </div>
+          <h4 class="text-sm font-bold text-white uppercase">Diet Charts</h4>
+          <span class="text-[11px] text-gray-400 block">Custom Indian Meals</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section: Batches & Timings (Visual Time Cards) -->
+  <section id="batches" class="py-16 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-zinc-800">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
+        <span class="text-xs font-black uppercase tracking-widest text-brand-red">Workout Timing</span>
+        <h2 class="text-3xl sm:text-4xl font-black font-heading text-white uppercase">
+          Daily Batches & Hours
+        </h2>
+        <p class="text-xs sm:text-sm text-gray-400">Open Monday to Saturday • Sunday closed for sanitization</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Morning -->
+        <div class="glass-card rounded-2xl p-6 border border-zinc-800 space-y-3">
+          <div class="flex items-center justify-between pb-3 border-b border-zinc-800">
+            <div class="flex items-center gap-2 text-amber-400">
+              <i data-lucide="sun" class="w-5 h-5"></i>
+              <h3 class="font-black font-heading text-lg text-white uppercase">Morning Batches</h3>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 text-xs font-bold">5:00 AM - 10:30 AM</span>
+          </div>
+          <div class="space-y-2 text-xs text-gray-300">
+            <div class="p-2.5 rounded-lg bg-zinc-900/90 flex justify-between"><span>5:00 AM – 6:30 AM</span><span class="text-emerald-400 font-bold">Cardio Fast Track</span></div>
+            <div class="p-2.5 rounded-lg bg-zinc-900/90 flex justify-between"><span>6:30 AM – 8:30 AM</span><span class="text-brand-red font-bold">Peak Strength</span></div>
+            <div class="p-2.5 rounded-lg bg-zinc-900/90 flex justify-between"><span>8:30 AM – 10:30 AM</span><span class="text-emerald-400 font-bold">Students & Youth</span></div>
+          </div>
+        </div>
+
+        <!-- Women Dedicated -->
+        <div class="glass-card rounded-2xl p-6 border-2 border-brand-red/50 space-y-3 relative">
+          <span class="absolute top-3 right-3 px-2.5 py-0.5 rounded-full bg-brand-red text-white text-[10px] font-black uppercase">Ladies Only</span>
+          <div class="flex items-center gap-2 text-pink-400 pb-3 border-b border-zinc-800">
+            <i data-lucide="heart" class="w-5 h-5"></i>
+            <h3 class="font-black font-heading text-lg text-white uppercase">Women's Batch</h3>
+          </div>
+          <div class="space-y-2 text-xs text-gray-300">
+            <div class="p-2.5 rounded-lg bg-zinc-900/90 flex justify-between"><span>10:30 AM – 11:30 AM</span><span class="text-pink-400 font-bold">Full Body Tone</span></div>
+            <div class="p-2.5 rounded-lg bg-zinc-900/90 flex justify-between"><span>11:30 AM – 12:30 PM</span><span class="text-pink-400 font-bold">Core & Cardio</span></div>
+            <p class="text-[11px] text-gray-400 pt-1">🔒 Zero male entry during ladies hour. Total comfort and privacy.</p>
+          </div>
+        </div>
+
+        <!-- Evening -->
+        <div class="glass-card rounded-2xl p-6 border border-zinc-800 space-y-3">
+          <div class="flex items-center justify-between pb-3 border-b border-zinc-800">
+            <div class="flex items-center gap-2 text-indigo-400">
+              <i data-lucide="moon" class="w-5 h-5"></i>
+              <h3 class="font-black font-heading text-lg text-white uppercase">Evening Batches</h3>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 text-xs font-bold">4:30 PM - 9:30 PM</span>
+          </div>
+          <div class="space-y-2 text-xs text-gray-300">
+            <div class="p-2.5 rounded-lg bg-zinc-900/90 flex justify-between"><span>4:30 PM – 6:00 PM</span><span class="text-emerald-400 font-bold">Youth Power Hour</span></div>
+            <div class="p-2.5 rounded-lg bg-zinc-900/90 flex justify-between"><span>6:00 PM – 8:30 PM</span><span class="text-brand-red font-bold">Prime Heavy Iron</span></div>
+            <div class="p-2.5 rounded-lg bg-zinc-900/90 flex justify-between"><span>8:30 PM – 9:30 PM</span><span class="text-emerald-400 font-bold">Late Night Workout</span></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section: Interactive BMI & Calorie Tool -->
+  <section id="calculator" class="py-16 px-4 sm:px-6 lg:px-8 relative z-10 bg-brand-surface/80 border-t border-zinc-800">
+    <div class="max-w-4xl mx-auto">
+      
+      <div class="glass-card rounded-3xl p-6 sm:p-8 border border-zinc-700/80 grid grid-cols-1 md:grid-cols-12 gap-8 items-center shadow-2xl">
+        
+        <div class="md:col-span-7 space-y-4">
+          <div>
+            <span class="text-xs font-black uppercase tracking-widest text-brand-red">Free Health Tool</span>
+            <h3 class="text-2xl sm:text-3xl font-black font-heading text-white uppercase mt-1">Instant BMI & Calories</h3>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Gender</label>
+              <select id="calc-gender" class="w-full px-3 py-2 bg-zinc-900 border border-zinc-700 rounded-xl text-xs text-white">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Age</label>
+              <input type="number" id="calc-age" value="23" class="w-full px-3 py-2 bg-zinc-900 border border-zinc-700 rounded-xl text-xs text-white" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Height (cm)</label>
+              <input type="number" id="calc-height" value="172" class="w-full px-3 py-2 bg-zinc-900 border border-zinc-700 rounded-xl text-xs text-white" />
+            </div>
+            <div>
+              <label class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Weight (kg)</label>
+              <input type="number" id="calc-weight" value="68" class="w-full px-3 py-2 bg-zinc-900 border border-zinc-700 rounded-xl text-xs text-white" />
+            </div>
+          </div>
+
+          <button onclick="calculateFitnessMetrics()" class="w-full py-3 rounded-xl btn-shimmer text-white font-black text-xs uppercase tracking-wider transition">
+            CALCULATE NOW
+          </button>
+        </div>
+
+        <div class="md:col-span-5 bg-zinc-900/90 rounded-2xl p-5 border border-zinc-800 text-center space-y-3">
+          <span class="text-[10px] uppercase font-bold text-gray-400 block">Your BMI Score</span>
+          <div id="result-bmi" class="text-4xl font-black font-heading text-brand-red">23.0</div>
+          <span id="result-category" class="inline-block px-3 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold">Healthy Normal Weight</span>
+
+          <div class="grid grid-cols-2 gap-2 pt-2 border-t border-zinc-800 text-left text-xs">
+            <div class="p-2 rounded bg-zinc-800">
+              <span class="text-[10px] text-gray-400 block">Daily Calories:</span>
+              <span id="result-calories" class="font-bold text-white">2,150</span> kcal
+            </div>
+            <div class="p-2 rounded bg-zinc-800">
+              <span class="text-[10px] text-gray-400 block">Protein Goal:</span>
+              <span id="result-protein" class="font-bold text-white">125</span> g/day
+            </div>
+          </div>
+
+          <button onclick="sendCalculatedPlanToWhatsApp()" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>Get Diet Chart on WhatsApp</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section: Transparent Membership Pricing -->
+  <section id="pricing" class="py-16 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-zinc-800">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
+        <span class="text-xs font-black uppercase tracking-widest text-brand-red">Simple Pricing</span>
+        <h2 class="text-3xl sm:text-4xl font-black font-heading text-white uppercase">
+          Membership Packages
+        </h2>
+        <p class="text-xs sm:text-sm text-gray-400">Zero admission charge • Full floor & cardio access</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- 1 Month -->
+        <div class="glass-card rounded-2xl p-6 space-y-4 border border-zinc-800 flex flex-col justify-between">
+          <div class="space-y-3">
+            <span class="text-[10px] uppercase font-bold text-gray-400">Starter</span>
+            <h3 class="text-lg font-bold font-heading text-white">1 Month</h3>
+            <div class="text-3xl font-black font-heading text-white">₹1,200</div>
+            <p class="text-xs text-gray-400">Full gym floor & cardio access.</p>
+          </div>
+          <button onclick="openModalWithGoal('1 Month Plan')" class="w-full py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold uppercase tracking-wider transition">
+            Join 1 Month
+          </button>
+        </div>
+
+        <!-- 3 Months (Most Popular) -->
+        <div class="glass-card rounded-2xl p-6 space-y-4 border-2 border-brand-red relative scale-105 z-10 bg-brand-surface flex flex-col justify-between shadow-xl shadow-brand-red/20">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-red text-white text-[10px] font-black uppercase px-3 py-0.5 rounded-full">Most Popular</span>
+          <div class="space-y-3 pt-1">
+            <span class="text-[10px] uppercase font-bold text-brand-red">Transform</span>
+            <h3 class="text-lg font-bold font-heading text-white">3 Months</h3>
+            <div class="text-3xl font-black font-heading text-brand-red">₹3,000</div>
+            <p class="text-xs text-emerald-400 font-bold">Includes Free Diet Chart</p>
+          </div>
+          <button onclick="openModalWithGoal('3 Months Transformation Plan')" class="w-full py-2.5 rounded-xl btn-shimmer text-white text-xs font-black uppercase tracking-wider transition">
+            Claim 3 Months
+          </button>
+        </div>
+
+        <!-- 6 Months -->
+        <div class="glass-card rounded-2xl p-6 space-y-4 border border-zinc-800 flex flex-col justify-between">
+          <div class="space-y-3">
+            <span class="text-[10px] uppercase font-bold text-gray-400">Athlete</span>
+            <h3 class="text-lg font-bold font-heading text-white">6 Months</h3>
+            <div class="text-3xl font-black font-heading text-white">₹5,200</div>
+            <p class="text-xs text-emerald-400 font-bold">Includes Free Shaker Bottle</p>
+          </div>
+          <button onclick="openModalWithGoal('6 Months Athlete Plan')" class="w-full py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold uppercase tracking-wider transition">
+            Join 6 Months
+          </button>
+        </div>
+
+        <!-- 1 Year -->
+        <div class="glass-card rounded-2xl p-6 space-y-4 border border-zinc-800 flex flex-col justify-between">
+          <div class="space-y-3">
+            <span class="text-[10px] uppercase font-bold text-amber-400">Elite VIP</span>
+            <h3 class="text-lg font-bold font-heading text-white">12 Months</h3>
+            <div class="text-3xl font-black font-heading text-amber-400">₹8,999</div>
+            <p class="text-xs text-emerald-400 font-bold">Under ₹750/month</p>
+          </div>
+          <button onclick="openModalWithGoal('12 Months Annual VIP')" class="w-full py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold uppercase tracking-wider transition">
+            Join Annual VIP
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Final Call to Action -->
+  <section class="py-14 px-4 sm:px-6 lg:px-8 relative z-10 text-center border-t border-zinc-800 bg-brand-surface">
+    <div class="max-w-2xl mx-auto space-y-5">
+      <h2 class="text-3xl sm:text-4xl font-black font-heading text-white uppercase">
+        Visit Us In Anaith, Ara Today
+      </h2>
+      <p class="text-sm text-gray-300">
+        Deo Vihar, Near Bazaar Samiti Gate, Anaith, Ara. Free 1-Day Trial Passes issued daily.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+        <button onclick="openModal()" class="w-full sm:w-auto px-8 py-3.5 rounded-xl btn-shimmer text-white font-black text-xs uppercase tracking-wider shadow-lg shadow-brand-red/40">
+          CLAIM 1-DAY FREE PASS &rarr;
+        </button>
+        <a href="https://maps.google.com/?q=RSA+Pro+Fitness+Ara+Bihar" target="_blank" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2">
+          <i data-lucide="map-pin" class="w-4 h-4 text-brand-red"></i>
+          <span>Open Google Maps</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-brand-dark border-t border-zinc-800 py-8 px-4 text-xs text-gray-500 text-center relative z-10">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2 font-bold text-white">
+        <i data-lucide="dumbbell" class="w-4 h-4 text-brand-red"></i>
+        <span>RSA PRO FITNESS ARA</span>
+      </div>
+      <div>&copy; 2026 RSA Pro Fitness. All rights reserved. Phone: +91 8210453434</div>
+      <div class="flex items-center gap-4 text-gray-400">
+        <a href="https://www.instagram.com/rsaprofitness/" target="_blank" class="hover:text-white"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+        <a href="https://wa.me/918210453434" target="_blank" class="hover:text-white"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Mobile Action Bar -->
+  <div class="fixed bottom-0 inset-x-0 z-40 bg-black/90 backdrop-blur-md border-t border-zinc-800 p-3 flex sm:hidden items-center justify-between gap-3 shadow-2xl">
+    <a href="tel:+918210453434" class="flex-1 py-3 rounded-xl bg-zinc-800 text-white font-bold text-xs uppercase flex items-center justify-center gap-1.5 border border-zinc-700">
+      <i data-lucide="phone" class="w-4 h-4 text-brand-red"></i>
+      <span>Call Gym</span>
+    </a>
+    <button onclick="openModal()" class="flex-2 py-3 px-5 rounded-xl btn-shimmer text-white font-black text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-lg shadow-brand-red/50">
+      <i data-lucide="ticket" class="w-4 h-4"></i>
+      <span>Free Pass</span>
+    </button>
+  </div>
+
+  <!-- Interactive 1-Day Pass Modal -->
+  <div id="trial-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+    <div class="glass-card bg-brand-surface rounded-2xl max-w-md w-full p-6 border border-brand-red/40 shadow-2xl relative transform scale-95 transition-transform duration-300" id="modal-container">
+      
+      <button onclick="closeModal()" class="absolute top-4 right-4 p-2 rounded-lg bg-zinc-800 text-gray-400 hover:text-white transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="space-y-4">
+        <div>
+          <h3 class="text-xl font-black font-heading text-white uppercase">Claim 1-Day Free Trial Pass</h3>
+          <p class="text-xs text-gray-400">Experience RSA Pro Fitness Ara with zero charges</p>
+        </div>
+
+        <form id="modal-form" onsubmit="handleModalSubmit(event)" class="space-y-3 pt-1">
+          <div>
+            <label class="block text-[10px] uppercase font-bold text-gray-300 mb-1">Your Name</label>
+            <input type="text" id="modal-name" required placeholder="e.g. Vikas Kumar" class="w-full px-3 py-2 bg-zinc-900 border border-zinc-700 rounded-xl text-xs text-white" />
+          </div>
+
+          <div>
+            <label class="block text-[10px] uppercase font-bold text-gray-300 mb-1">WhatsApp Number</label>
+            <input type="tel" id="modal-phone" required placeholder="e.g. 98765 43210" class="w-full px-3 py-2 bg-zinc-900 border border-zinc-700 rounded-xl text-xs text-white" />
+          </div>
+
+          <div>
+            <label class="block text-[10px] uppercase font-bold text-gray-300 mb-1">Your Fitness Goal</label>
+            <select id="modal-goal" class="w-full px-3 py-2 bg-zinc-900 border border-zinc-700 rounded-xl text-xs text-white">
+              <option value="Fat Loss & Belly Reduction">Fat Loss & Belly Reduction</option>
+              <option value="Muscle Building & Bulking">Muscle Building & Bulking</option>
+              <option value="Police / Army / Defense Physical Test">Police / Army Physical Test Prep</option>
+              <option value="General Strength & Fitness">General Strength & Fitness</option>
+              <option value="Ladies Fitness & Weight Management">Ladies Fitness & Weight Loss</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[10px] uppercase font-bold text-gray-300 mb-1">Preferred Slot</label>
+            <select id="modal-time" class="w-full px-3 py-2 bg-zinc-900 border border-zinc-700 rounded-xl text-xs text-white">
+              <option value="Morning (6:00 AM - 9:00 AM)">Morning (6:00 AM - 9:00 AM)</option>
+              <option value="Ladies Batch (10:30 AM - 12:30 PM)">Ladies Batch (10:30 AM - 12:30 PM)</option>
+              <option value="Evening (5:00 PM - 8:30 PM)">Evening (5:00 PM - 8:30 PM)</option>
+            </select>
+          </div>
+
+          <button type="submit" class="w-full py-3 rounded-xl btn-shimmer text-white font-black text-xs uppercase tracking-wider transition mt-2">
+            CLAIM PASS ON WHATSAPP &rarr;
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive JavaScript & Dynamic Particle Engine -->
+  <script>
+    lucide.createIcons();
+
+    // Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    function closeMobileMenu() { mobileMenu.classList.add('hidden'); }
+
+    // Modal
+    const modal = document.getElementById('trial-modal');
+    const modalContainer = document.getElementById('modal-container');
+
+    function openModal() {
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modalContainer.classList.remove('scale-95');
+        modalContainer.classList.add('scale-100');
+      }, 10);
+    }
+    function openModalWithGoal(goal) {
+      document.getElementById('modal-goal').value = goal;
+      openModal();
+    }
+    function closeModal() {
+      modal.classList.add('opacity-0');
+      modalContainer.classList.remove('scale-100');
+      modalContainer.classList.add('scale-95');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+    function handleModalSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('modal-name').value.trim();
+      const phone = document.getElementById('modal-phone').value.trim();
+      const goal = document.getElementById('modal-goal').value;
+      const time = document.getElementById('modal-time').value;
+
+      const text = `Hello RSA Pro Fitness Ara! 🏋️‍♂️%0A%0AMy name is *${encodeURIComponent(name)}*.%0APhone: *${encodeURIComponent(phone)}*%0AGoal: *${encodeURIComponent(goal)}*%0APreferred Batch: *${encodeURIComponent(time)}*%0A%0AI would like to claim my *1-Day Free Trial Pass*!`;
+      closeModal();
+      window.open(`https://wa.me/918210453434?text=${text}`, '_blank');
+    }
+
+    // BMI Calculator
+    function calculateFitnessMetrics() {
+      const gender = document.getElementById('calc-gender').value;
+      const age = parseFloat(document.getElementById('calc-age').value) || 24;
+      const height = parseFloat(document.getElementById('calc-height').value) || 172;
+      const weight = parseFloat(document.getElementById('calc-weight').value) || 68;
+
+      const hM = height / 100;
+      const bmi = (weight / (hM * hM)).toFixed(1);
+      document.getElementById('result-bmi').innerText = bmi;
+
+      const badge = document.getElementById('result-category');
+      if (bmi < 18.5) {
+        badge.innerText = 'Underweight (Bulking Recommended)';
+        badge.className = 'inline-block px-3 py-0.5 rounded-full bg-blue-500/20 text-blue-400 text-xs font-bold';
+      } else if (bmi <= 24.9) {
+        badge.innerText = 'Healthy Normal Weight';
+        badge.className = 'inline-block px-3 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold';
+      } else if (bmi <= 29.9) {
+        badge.innerText = 'Overweight (Fat Shred Recommended)';
+        badge.className = 'inline-block px-3 py-0.5 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold';
+      } else {
+        badge.innerText = 'Obese Range (Transformation Priority)';
+        badge.className = 'inline-block px-3 py-0.5 rounded-full bg-red-500/20 text-red-400 text-xs font-bold';
+      }
+
+      let bmr = (gender === 'male') ? (88.36 + 13.4 * weight + 4.8 * height - 5.7 * age) : (447.6 + 9.2 * weight + 3.1 * height - 4.3 * age);
+      const cal = Math.round(bmr * 1.4);
+      const pro = Math.round(weight * 1.8);
+      document.getElementById('result-calories').innerText = cal.toLocaleString();
+      document.getElementById('result-protein').innerText = pro.toString();
+    }
+
+    function sendCalculatedPlanToWhatsApp() {
+      const bmi = document.getElementById('result-bmi').innerText;
+      const cat = document.getElementById('result-category').innerText;
+      const cal = document.getElementById('result-calories').innerText;
+      const pro = document.getElementById('result-protein').innerText;
+      const wt = document.getElementById('calc-weight').value;
+      const ht = document.getElementById('calc-height').value;
+
+      const text = `Hi RSA Gym Trainer! 🏋️‍♂️%0A%0AWebsite BMI Score:%0A- Height: ${ht} cm | Weight: ${wt} kg%0A- BMI: ${bmi} (${encodeURIComponent(cat)})%0A- Maintenance: ${cal} kcal%0A- Target Protein: ${pro}g/day%0A%0APlease share a meal plan and membership details!`;
+      window.open(`https://wa.me/918210453434?text=${text}`, '_blank');
+    }
+
+    // ==========================================
+    // High-Visibility Interactive Particle Canvas
+    // ==========================================
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+    const particleCount = 65;
+
+    let mouse = { x: -1000, y: -1000, radius: 150 };
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 1.2;
+        this.vy = (Math.random() - 0.5) * 1.2;
+        this.radius = Math.random() * 2.5 + 1.2;
+        this.alpha = Math.random() * 0.6 + 0.4;
+        this.color = Math.random() > 0.3 ? '#ff2a2a' : '#ffaa00';
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+
+        // Mouse proximity glow
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < mouse.radius) {
+          this.alpha = Math.min(1, this.alpha + 0.05);
+        }
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.shadowBlur = 16;
+        ctx.shadowColor = this.color;
+        ctx.globalAlpha = this.alpha;
+        ctx.fill();
+        ctx.globalAlpha = 1.0;
+      }
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Connecting lines
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 140) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(255, 42, 42, ${0.35 * (1 - dist / 140)})`;
+            ctx.lineWidth = 1.2;
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Mouse interactive links
+      for (let i = 0; i < particles.length; i++) {
+        const dx = mouse.x - particles[i].x;
+        const dy = mouse.y - particles[i].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(mouse.x, mouse.y);
+          ctx.lineTo(particles[i].x, particles[i].y);
+          ctx.strokeStyle = `rgba(255, 170, 0, ${0.45 * (1 - dist / 120)})`;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        }
+      }
+
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+</html>
